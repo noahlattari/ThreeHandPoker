@@ -1,6 +1,6 @@
-mappings = {'2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, 'T':10, 'J':11, 'Q':12, 'K':13, 'A':14}
-#print(mappings.get('T'))
+import sys, io
 
+mappings = {'2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, 'T':10, 'J':11, 'Q':12, 'K':13, 'A':14}
 
 bestHand = []
 lines = []
@@ -12,8 +12,5 @@ bestHand = [ lines[0], lines[1], lines[2], lines[3]]
 
 #for i in range( int(lines) / hands - 1) :
 
-print(lines)
-print(bestHand)
-
 def highCard( hand ):
-   return max(hand[0], hand[1], hand[2])
+   return max(mappings.get(hand[1][0]), mappings.get(hand[2][0]), mappings.get(hand[3][0]))
