@@ -14,3 +14,4 @@ bestHand = [ lines[0], lines[1], lines[2], lines[3]]
 
 def highCard( hand ):
    return max(mappings.get(hand[1][0]), mappings.get(hand[2][0]), mappings.get(hand[3][0]))
+   
