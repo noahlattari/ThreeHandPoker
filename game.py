@@ -10,13 +10,13 @@ def highCard( hand ):
    return max(mappings.get(hand[1][0]), mappings.get(hand[2][0]), mappings.get(hand[3][0]))
 
 def flush( hand ):
-   return mappings.get(hand[1][1]) == mappings.get(hand[2][1]) and mappings.get(hand[2][1]) == mappings.get(hand[3][1])
+   return hand[1][1] == hand[2][1] and hand[2][1] == hand[3][1]
 
 def straight(hand):
     x = mappings.get(hand[1][0])
     y = mappings.get(hand[2][0])
     z = mappings.get(hand[3][0])
-    if (x + 1 == y and y + 1 == z) or (x + 1 == z and z + 1 == y) or (y + 1 == z and z + 1 == x) or (y + 1 == x and x + 1 == z) or (z + 1 == y and y + 1 == x) or (z + 1 == x and x + 1 == y):
+    if ( (x + 1) == y and (y + 1) == z) or ( (x + 1) == z and (z + 1) == y) or ( (y + 1) == z and (z + 1) == x) or ( (y + 1) == x and (x + 1) == z) or ( (z + 1) == y and (y + 1) == x) or ( (z + 1) == x and (x + 1) == y):
         return True
    
 def threeOfAKind(hand):
@@ -47,9 +47,27 @@ def handType(hand):
 
 for i in range(int(number_of_hands)):
     lines+=input().replace("\n", "").split(" ")
-
+print(lines)
 bestHand = [ lines[0], lines[1], lines[2], lines[3] ]
+ties = []
 
-for i in range(number_of_hands-1):
-   print("hi")
+for i in range( 0, (len(lines)), 4 ):
+
+   hand = [ lines[i], lines[i + 1], lines[i + 2], lines[i + 3] ]
    
+   if(handType(hand) > handType(bestHand)):
+      bestHand = hand
+      ties = []
+   elif(handType(hand) == handType(bestHand)):
+      if(highCard(hand) > highCard(bestHand)):
+         bestHand = hand
+         ties = []
+      elif(highCard(hand) == highCard(bestHand)):
+         ties.append(hand[0])
+         ties.append(bestHand[0])
+
+if (len(ties) == 0):
+   print(bestHand[0])
+else:
+   ties.sort()
+   print(ties)
