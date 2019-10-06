@@ -50,4 +50,6 @@ for i in range(int(number_of_hands)):
 
 bestHand = [ lines[0], lines[1], lines[2], lines[3] ]
 
-
+for i in range(number_of_hands-1):
+   print("hi")
+   
