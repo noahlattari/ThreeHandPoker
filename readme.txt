@@ -9,3 +9,4 @@ For manual entry please run:
 1 Jd 5c 7s
 2 9s 3h 2d"
 
+Thank you for giving me this opportunity! Python isn't my main language I'm best with but figured this would be a good learning experience. 
